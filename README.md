@@ -22,6 +22,7 @@ Follow these steps to play the Puzzle Game:
 2. **Open the Game:**
    - Navigate to the cloned repository folder.
    - Find and double-click the `index.html` file to open the game in your default web browser.
+![Screenshot 2023-09-23 110707](https://github.com/Mayank-Garg7/PuzzleGame/assets/113042462/d617d216-7b78-4bf2-9c74-94639e8d3a25)
 
 3. **Game Instructions:**
    - The game presents a grid of tiles with numbers (1 through 8) and one empty space.
