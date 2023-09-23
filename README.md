@@ -1,19 +1,14 @@
 # Puzzle Game Readme
 
-![Screenshot 2023-09-23 110707](https://github.com/Mayank-Garg7/PuzzleGame/assets/113042462/b71156fb-d622-4beb-b59d-d0fab3bc282d)
-
 ## Overview
 
-This repository contains a simple puzzle game built using HTML, CSS, and JavaScript. The game is designed to test your knowledge with a general knowledge quiz. Players will be presented with a series of questions and multiple-choice options. After selecting an answer, they can see if they got it right or wrong before moving on to the next question. This readme file provides information on how to set up and play the game.
+Welcome to the Puzzle Game project! This repository contains a web-based puzzle game created using HTML, CSS, and JavaScript. The game is a sliding tile puzzle where players must rearrange the tiles to solve the puzzle and reveal a hidden image. This readme file provides information on how to play the game and customize it according to your preferences.
 
-## Prerequisites
-
-Before playing the game, ensure you have the following:
-
-- A web browser (Google Chrome, Mozilla Firefox, Safari, etc.).
-- An internet connection to load external resources (CSS and JavaScript files).
+![Puzzle Game Screenshot](https://images.unsplash.com/photo-1679931974847-bbb01236fe88?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODIwNDg5Mzc&ixlib=rb-4.0.3&q=85)
 
 ## How to Play
+
+Follow these steps to play the Puzzle Game:
 
 1. **Clone the Repository:**
    - Open your terminal or command prompt.
@@ -29,34 +24,34 @@ Before playing the game, ensure you have the following:
    - Find and double-click the `index.html` file to open the game in your default web browser.
 
 3. **Game Instructions:**
-   - Once the game loads, you'll see the "General Knowledge Quiz" title and a brief description.
+   - The game presents a grid of tiles with numbers (1 through 8) and one empty space.
+   - Your goal is to slide the tiles around to arrange them in the correct order (1 through 8) and reveal the hidden image.
 
-4. **Start the Quiz:**
-   - Click the "Next" button to start the quiz.
-   - You'll be presented with a question and multiple-choice options.
+4. **Playing the Game:**
+   - Click on a tile next to the empty space to slide it into the empty space.
+   - Continue sliding tiles until you've successfully arranged them in ascending order.
 
-5. **Answer Questions:**
-   - Choose an answer by clicking on the option you think is correct.
-   - After selecting an answer, you'll see whether you got it right or wrong.
+5. **Winning the Game:**
+   - Once you've arranged all tiles correctly, you'll win the game.
+   - A winning message, along with your move count, will be displayed on the screen.
+![Screenshot 2023-09-23 131229](https://github.com/Mayank-Garg7/PuzzleGame/assets/113042462/2b3555a5-e4b7-4a2a-a720-dad8e68aac2a)
 
-6. **Continue Playing:**
-   - Click the "Next" button to move on to the next question.
-   - Repeat steps 4 and 5 until you've answered all the questions.
-
-7. **View Your Score:**
-   - After completing the quiz, you'll see your score displayed on the screen.
-   - You can also refresh the page to retake the quiz.
+6. **Play Again:**
+   - If you want to play again, simply click the "Play Again!" button.
+   - The game will reset, and you can enjoy another round.
 
 ## Customization
 
-You can customize the quiz by modifying the `script.js` file and the `style.css` file:
+You can customize the game by modifying the `script.js` file and the `style.css` file:
 
-- **Questions and Answers:** Open `script.js` and edit the questions and answer choices as needed.
+- **Images:** Replace the image URL in the `<img>` tag within the `winScreen` section in `index.html` with your own image.
 
-- **Styling:** Open `style.css` to change the appearance of the quiz container, buttons, or any other design elements.
+- **Tile Layout:** You can change the layout of the tiles by modifying the HTML structure in `index.html`.
+
+- **Styling:** Open `style.css` to change the appearance of the game, including the background, tile colors, and fonts.
 
 ## Credits
 
-This puzzle game was created by [Your Name]. Feel free to modify, share, and distribute it as you like. If you have any questions or feedback, please contact [Your Email].
+This Puzzle Game project was created by Mayank Garg . Feel free to modify, share, and distribute it as you like. If you have any questions or feedback, please contact mayankgarg082@gmail.com .
 
-Enjoy playing the General Knowledge Quiz game!
+Enjoy playing the Puzzle Game and challenge yourself to solve it as quickly as possible!
