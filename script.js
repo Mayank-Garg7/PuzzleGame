@@ -1,122 +1,52 @@
-const questions = [
-    {
-        question: "What is the capital of France?",
-        options: ["Berlin", "Madrid", "Paris", "Rome"],
-        correctAnswer: "Paris"
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Earth", "Mars", "Venus", "Jupiter"],
-        correctAnswer: "Mars"
-    },
-    {
-        question: "How many continents are there on Earth?",
-        options: ["5", "6", "7", "8"],
-        correctAnswer: "7"
-    },
-    {
-        question: "Which gas do plants absorb from the atmosphere?",
-        options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-        correctAnswer: "Carbon Dioxide"
-    },
-    {
-        question: "What is the largest mammal in the world?",
-        options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-        correctAnswer: "Blue Whale"
-    },
-    {
-        question: "Which country is known as the Land of the Rising Sun?",
-        options: ["China", "Japan", "South Korea", "Vietnam"],
-        correctAnswer: "Japan"
-    },
-    {
-        question: "What is the chemical symbol for gold?",
-        options: ["Go", "Au", "Ag", "Ge"],
-        correctAnswer: "Au"
-    },
-    {
-        question: "Who painted the Mona Lisa?",
-        options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
-        correctAnswer: "Leonardo da Vinci"
-    },
-    {
-        question: "Which planet is known as the Morning Star and Evening Star?",
-        options: ["Venus", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: "Venus"
-    },
-    {
-        question: "What is the largest organ in the human body?",
-        options: ["Heart", "Brain", "Skin", "Liver"],
-        correctAnswer: "Skin"
-    },
-    {
-        question: "Which gas makes up the majority of Earth's atmosphere?",
-        options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-        correctAnswer: "Nitrogen"
-    },
-    {
-        question: "Who wrote the play 'Romeo and Juliet'?",
-        options: ["William Shakespeare", "Jane Austen", "Charles Dickens", "George Orwell"],
-        correctAnswer: "William Shakespeare"
-    },
-    {
-        question: "What is the largest desert in the world?",
-        options: ["Sahara Desert", "Arabian Desert", "Gobi Desert", "Antarctica"],
-        correctAnswer: "Antarctica"
-    },
-    {
-        question: "Which gas is responsible for the Earth's ozone layer?",
-        options: ["Oxygen", "Carbon Dioxide", "Ozone", "Chlorofluorocarbons (CFCs)"],
-        correctAnswer: "Ozone"
-    },
-    {
-        question: "What is the smallest prime number?",
-        options: ["0", "1", "2", "3"],
-        correctAnswer: "2"
+var MovesCount=0
+function randomPos(){
+    var arr = [];
+    while(arr.length < 9){
+        var r = ((Math.floor(Math.random() * 3)+1).toString())+((Math.floor(Math.random() * 3)+1).toString());
+        if(arr.indexOf(r) === -1) arr.push(r);
     }
-];
-
-let currentQuestionIndex = 0;
-let score = 0;
-
-const questionContainer = document.getElementById("question-container");
-const optionsContainer = document.getElementById("options");
-const resultContainer = document.getElementById("result");
-const nextButton = document.getElementById("next-button");
-
-function loadQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
-    questionContainer.textContent = currentQuestion.question;
-    
-    optionsContainer.innerHTML = "";
-    currentQuestion.options.forEach((option) => {
-        const optionElement = document.createElement("button");
-        optionElement.textContent = option;
-        optionElement.addEventListener("click", checkAnswer);
-        optionsContainer.appendChild(optionElement);
-    });
+    return arr
 }
 
-function checkAnswer(event) {
-    const selectedOption = event.target.textContent;
-    const currentQuestion = questions[currentQuestionIndex];
-    if (selectedOption === currentQuestion.correctAnswer) {
-        score++;
-    }
-    currentQuestionIndex++;
+var RandomPos=randomPos()
 
-    if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-    } else {
-        showResult();
+for(let i =0;i<document.getElementsByClassName("tile").length;i++){
+    document.getElementsByClassName("tile")[i].style.gridArea=RandomPos[i][0]+"/"+RandomPos[i][1]
+}
+function MoveMe(tile){
+    var EmptyTile=document.querySelector(".emtile")
+    var Possibilties=[
+        parseInt(RandomPos[tile][0])+1==parseInt(RandomPos[8][0])&&parseInt(RandomPos[tile][1])==parseInt(RandomPos[8][1]),
+        parseInt(RandomPos[tile][0])-1==parseInt(RandomPos[8][0])&&parseInt(RandomPos[tile][1])==parseInt(RandomPos[8][1]),
+        parseInt(RandomPos[tile][1])+1==parseInt(RandomPos[8][1])&&parseInt(RandomPos[tile][0])==parseInt(RandomPos[8][0]),
+        parseInt(RandomPos[tile][1])-1==parseInt(RandomPos[8][1])&&parseInt(RandomPos[tile][0])==parseInt(RandomPos[8][0]),
+    ]
+if(Possibilties[0]||Possibilties[1]||Possibilties[2]||Possibilties[3]){
+    MovesCount++;
+    EmptyTile.style.gridArea=RandomPos[tile][0]+"/"+RandomPos[tile][1];
+    document.querySelectorAll(".tile")[tile].style.gridArea=RandomPos[8][0]+"/"+RandomPos[8][1];
+
+    var CurrentTile=RandomPos[tile]
+    RandomPos[tile]=RandomPos[8]
+    RandomPos[8]=CurrentTile;
+    NeededPos=["11","12","13","21","22","23","31","32","33"]
+    if(RandomPos.join(".")==NeededPos.join(".")){
+        console.log("Game Beated");
+        document.querySelector(".blscreen").style.display='flex'
+        document.querySelector(".MovesCount").innerHTML=MovesCount;
+        var stars=0;
+        if(MovesCount<100){
+            stars=3
+        }else if(MovesCount<200){
+            stars=2
+        }else if(MovesCount<300){
+            stars=1
+        }else{
+            stars=0
+        }
+        for(let i=0;i<2;i++){
+            document.getElementsByTagName("path").style.fill="yellow"
+        }
     }
 }
-
-function showResult() {
-    questionContainer.textContent = "";
-    optionsContainer.innerHTML = "";
-    resultContainer.textContent = `You scored ${score} out of ${questions.length} questions.`;
-    nextButton.style.display = "none";
 }
-
-loadQuestion();
